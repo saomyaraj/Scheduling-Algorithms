@@ -1,0 +1,107 @@
+
+body {
+    font-family: "Rubik", sans-serif;
+}
+
+#inputForm,
+#processInputs,
+#outputTable {
+    margin-bottom: 20px;
+}
+#numProcesses{
+    border-radius: 5px;
+    border: 1px solid rgb(78, 77, 77);
+    padding-left: 5px;
+    outline: none;
+    height: 22px;
+}
+#Generate{
+    display: block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+input {
+    margin-left: 10px;
+}
+
+.gantt {
+    display: flex;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.gantt-bar {
+    padding: 5px 10px;
+    border-radius: 3px;
+    height: 30px;
+    border: 0.1px solid rgb(125, 124, 124);
+    margin-right: 0px;
+    text-align: center;
+    line-height: 30px;
+}
+
+#outputTable {
+    width: 100%;
+    border-collapse: collapse;
+    
+}
+
+#outputTable th, #outputTable td {
+    border: 1px solid #8a8989;
+    padding: 8px;
+    text-align: center;
+}
+
+#outputTable th {
+    background-color: #f2f2f2;
+}
+
+.average {
+    font-weight: bold;
+    margin-top: 10px;
+
+}
+#inputTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#inputTable th, #inputTable td {
+    border: 1px solid #8a8989;
+    padding: 8px;
+    text-align: center;
+}
+
+#inputTable th {
+    background-color: #f2f2f2;
+}
+
+.time-input {
+    width: 100px;
+    padding: 5px;
+    border: 1px solid #8c8c8c;
+    border-radius: 7px;
+}
+
+#calculateButton {
+
+    display: none;
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+#calculateButton:hover {
+    background-color: #0056b3;
+}

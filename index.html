@@ -1,21 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Operating System Project</h1>
-    <div id="inputForm">
-        <label for="numProcesses">Number of Processes:</label>
-        <input type="number" id="numProcesses" name="numProcesses" min="1">
-        <button onclick="createInputFields()">Submit</button>
+    <div class="preloader">
+        <div class="spinner"></div>
+        <div class="loading-text">Loading<span class="dot1">.</span><span class="dot2">.</span><span class="dot3">.</span></div>
     </div>
-    <div id="processInputs"></div>
-    <button onclick="calculateTimes()" id="calculateButton" >Calculate Times</button>
-    <div id="outputTable"></div>
-    <div class="ganttChart" id="ganttChart"></div>
-    <button class="ganttbutton" onclick="createGanttChart()">CreateGantt </button>
+    <div class="container"> 
+        <h1><b>First Come First Serve (FCFS)</b></h1>
+
+        <p><h3><b>Introduction:</b></h3> <br>
+        <h4>This Algorithm is the simplest type of CPU scheduling. In FCFS, the process that arrives first is executed first. The execution continues until the process is finished, and then the next process in the queue is executed.</h4>
+        <h4>There is no preemption in FCFS scheduling. Once a process starts its execution, it runs to completion without being interrupted by other processes.</h4>
+        <p><h3><b>Criteria:</b></h3> <br>
+            <h4>The process that arrives first in the ready queue is served first.</h4>
+        <h3><b>Decision Mode:</b></h3> <br>   
+            <h4>Non-preemptive: The currently running process is not interrupted by new arrivals; it continues until completion.</h4>               
+        <h3><b>Implementation:</b></h3> <br>              
+            <h4>This strategy is implemented using a FIFO queue. Processes are executed in the order they arrive, with no sorting based on burst time.</h4></p>
+
+        <h1 class="advantages"><b>Advantages:</b></h1>
+        <ul class="text">
+        <li><h5>FCFS is simple to understand and easy to implement.</h5></li>
+        <li><h5>It is fair in the sense that it serves processes in the order they arrive.</h5></li>
+        <li><h5>There is no starvation; every process gets a chance to execute.</h5></li>
+        </ul>
+        
+        <h1 class="disadvantages"><b>Disadvantages:</b></h1>
+        <ul class="text">
+            <li>
+                <h5>Can lead to poor performance if a long process arrives before shorter ones, known as the convoy effect.</h5>
+            </li>
+            <li>
+                <h5>Not ideal for time-sharing systems where it is important to switch between processes frequently.</h5>
+            </li>
+            <li>
+                <h5>It does not prioritize processes, which can be inefficient if some processes are more important than others.</h5>
+            </li>
+        </ul>       
+    </div>
+
+    <div class="button-container">
+        <a href="Algorithm.html" class="active">Go to Algorithm</a>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
