@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
-    <link href="bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="srtn.css">
+    <link rel="stylesheet" href="content.css">
 </head>
 <body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="spinner"></div>
+        <div class="loading-text">Loading<span class="dot1">.</span><span class="dot2">.</span><span class="dot3">.</span></div>
+    </div>
     <div class="container"> 
         <h1><b>First Come First Serve (FCFS)</b></h1>
         <p><h4>This Algorithm is the simplest type of CPU scheduling. In FCFS, the process that arrives first is executed first. The execution continues until the process is finished, and then the next process in the queue is executed.</h4></p>
@@ -37,11 +40,8 @@
             <li>
                 <h5>It does not prioritize processes, which can be inefficient if some processes are more important than others.</h5>
             </li>
-        </ul>
-        
+        </ul>       
     </div>
-    <h3><b>Enter the number of Processes</b></h3>
-    <input class="w3-input w3-border-0 w3-round w3-light-grey"  type="number" id="inputs">
-    <button type="button" class="w3-btn w3-black w3-border w3-round" onclick="createProcess()" style="margin: 20px;">Proceed</button>
+    <script src="content.js"></script>
 </body>
 </html>
