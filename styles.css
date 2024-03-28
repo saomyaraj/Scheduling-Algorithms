@@ -1,0 +1,22 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#inputForm, #processInputs, #outputTable {
+    margin-bottom: 20px;
+}
+
+input {
+    margin-left: 10px;
+}
+.gantt {
+    display: flex;
+}
+
+.gantt-bar {
+    height: 20px;
+    border: 1px solid black;
+    margin-right: 5px;
+    text-align: center;
+    line-height: 20px;
+}
