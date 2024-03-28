@@ -138,3 +138,28 @@ b {
         padding: 10px;
     }
 }
+
+/* Link styles */
+.button-container {
+    text-align: center; /* Center align horizontally */
+    margin-top: 20px;
+}
+
+a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff; /* Blue color */
+    color: #fff; /* White color */
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+a:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+a.active {
+    background-color: #0056b3; /* Darker blue for active state */
+}
