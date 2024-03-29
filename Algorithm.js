@@ -22,10 +22,57 @@ function createInputFields() {
     document.getElementById('calculateButton').style.display = 'block';
 }
 
-
-
 function calculateTimes() {
     let numProcesses = document.getElementById('numProcesses').value;
+    if (numProcesses) {
+        let allInputsFilled = true;
+        for (let i = 0; i < numProcesses; i++) {
+            let arrivalTime = document.getElementById(`arrivalTime${i}`).value;
+            let burstTime = document.getElementById(`burstTime${i}`).value;
+            if (arrivalTime.trim() === '' || burstTime.trim() === '') {
+                allInputsFilled = false;
+                break;
+            }
+        }
+        if (allInputsFilled) {
+            let totalWaitingTime = 0;
+            let totalTurnAroundTime = 0;
+            for (let i = 0; i < numProcesses; i++) {
+                let arrivalTime = document.getElementById(`arrivalTime${i}`).value;
+                let burstTime = document.getElementById(`burstTime${i}`).value;
+                processes.push({arrivalTime: parseInt(arrivalTime), burstTime: parseInt(burstTime), completionTime: 0, turnAroundTime: 0, waitingTime: 0});
+            }
+            processes.sort((a, b) => a.arrivalTime - b.arrivalTime);
+            let currentTime = processes[0].arrivalTime;
+            for (let i = 0; i < processes.length; i++) {
+                if (currentTime < processes[i].arrivalTime) {
+                    currentTime = processes[i].arrivalTime;
+                }
+                currentTime += processes[i].burstTime;
+                processes[i].completionTime = currentTime;
+                processes[i].turnAroundTime = processes[i].completionTime - processes[i].arrivalTime;
+                processes[i].waitingTime = processes[i].turnAroundTime - processes[i].burstTime;
+                totalWaitingTime += processes[i].waitingTime;
+                totalTurnAroundTime += processes[i].turnAroundTime;
+            }
+            let avgWaitingTime = totalWaitingTime / numProcesses;
+            let avgTurnAroundTime = totalTurnAroundTime / numProcesses;
+            displayTable(avgWaitingTime, avgTurnAroundTime);
+            createGanttChart()
+        } else {
+            alert("Please fill in all the input fields.");
+        }
+    } else {
+        alert("Please enter the number of processes.");
+    }
+}
+
+
+
+
+function calculateTimess() {
+    let numProcesses = document.getElementById('numProcesses').value;
+    if(numProcesses){
     let totalWaitingTime = 0;
     let totalTurnAroundTime = 0;
     for (let i = 0; i < numProcesses; i++) {
@@ -50,7 +97,7 @@ function calculateTimes() {
     let avgTurnAroundTime = totalTurnAroundTime / numProcesses;
     displayTable(avgWaitingTime, avgTurnAroundTime);
     createGanttChart()
-
+    }
 }
 
 function displayTable(avgWaitingTime, avgTurnAroundTime) {
@@ -76,9 +123,9 @@ function createGanttChart() {
 
     for (let i = 0; i < processes.length; i++) {
         let process = processes[i];
-        let width = (process.burstTime / totalTime) * 100;
+        let width = (process.burstTime / totalTime) * 130;
         chartHTML += `<div class="gantt-bar" style="width:${width}%; left:${(currentTime / totalTime) * 100}%; background-color:${getRandomColor()};">
-                        <span>Process ${i+1}<br>(${process.burstTime} units)</span>
+                        <span style="white-space: nowrap;">Process ${i+1}<br>(${process.burstTime} units)</span>
                       </div>`;
         currentTime += process.burstTime;
     }
