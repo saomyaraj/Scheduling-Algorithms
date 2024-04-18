@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priority Scheduling Algorithm</title>
+    <link rel="stylesheet" href="Priority.css">
+</head>
+<body>
+    <div class="preloader">
+        <div class="spinner"></div>
+        <div class="loading-text">Loading<span class="dot1">.</span><span class="dot2">.</span><span class="dot3">.</span></div>
+    </div>
+    <div class="container">
+        <br>
+        <h1><b><i>Priority Scheduling Algorithm</i></b></h1>
+        <br>
+        <p><h3><b>Introduction:</b></h3> <br>
+        <h4>The priority scheduling algorithm is a non-preemptive scheduling algorithm where processes are scheduled according to their priority.</h4>
+        <h4>In this algorithm, each process is assigned a priority. The process with the highest priority is executed first, followed by lower priority processes.</h4>
+        <p><h3><b>Criteria:</b></h3> <br>
+            <h4>The process with the highest priority is served first.</h4>
+        <h3><b>Decision Mode:</b></h3> <br>   
+            <h4>Non-preemptive: Once a process starts its execution, it continues until completion without being interrupted by other processes.</h4>               
+        <h3><b>Implementation:</b></h3> <br>              
+            <h4>This algorithm can be implemented using a priority queue or by sorting processes based on their priority.</h4></p>
+        <br>
+        <h1 class="advantages"><b>Advantages</b></h1>
+        <ul class="text">
+        <li><h5>Priority scheduling allows important processes to be executed first, which can improve system performance.</h5></li>
+        <li><h5>It can be useful in real-time systems where certain tasks need to be prioritized over others.</h5></li>
+        </ul>
+        <br>
+        <h1 class="disadvantages"><b>Disadvantages</b></h1>
+        <ul class="text">
+            <li>
+                <h5>Potential for starvation: Lower priority processes may never get a chance to execute if higher priority processes keep arriving.</h5>
+            </li>
+            <li>
+                <h5>It requires accurate estimation of process priorities, which can be challenging.</h5>
+            </li>
+        </ul>
+        <h1 class="algorithm"><b>Algorithm</b></h1>
+        <ol class="text-algo">
+                <li>Assign priority to each process.</li>
+                <li>Sort processes based on priority (higher priority first).</li>
+                <li>Execute processes in the sorted order.</li>
+        </ol>
+        <br>
+        <h1 class="code"><b>Sample Code</b></h1>
+        <pre id="codeSnippet">
+            <code>
+# Function to Calculate completion time, waiting time, turnaround time, and average times
+def CalculateTimes(at, bt, priority, N):
+# Declare the arrays for completion time, waiting time, and turnaround time
+    ct = [0] * N
+    wt = [0] * N
+    tat = [0] * N
+
+    # Sort processes based on priority (higher priority first)
+    for i in range(N - 1):
+        for j in range(i + 1, N):
+            if priority[i] < priority[j]:
+                at[i], at[j] = at[j], at[i]
+                bt[i], bt[j] = bt[j], bt[i]
+                priority[i], priority[j] = priority[j], priority[i]
+
+    # Calculate completion time for each process
+    ct[0] = at[0] + bt[0]
+    for i in range(1, N):
+        ct[i] = max(ct[i - 1], at[i]) + bt[i]
+
+    # Calculate waiting time for each process
+    for i in range(N):
+        wt[i] = ct[i] - at[i] - bt[i]
+
+    # Calculate turnaround time for each process
+    for i in range(N):
+        tat[i] = bt[i] + wt[i]
+
+    # Calculate average waiting time
+    avg_wt = sum(wt) / N
+
+    # Calculate average turnaround time
+    avg_tat = sum(tat) / N
+
+    # Print table header
+    print("\nProcess\tArrival Time\tBurst Time\tPriority\tCompletion Time\tWaiting Time\tTurnaround Time")
+
+    # Print process details
+    for i in range(N):
+        print(f"{i + 1}\t{at[i]}\t\t{bt[i]}\t\t{priority[i]}\t\t{ct[i]}\t\t{wt[i]}\t\t{tat[i]}")
+
+    # Print Average Waiting Time and Average Turnaround Time
+    print("\nAverage Waiting Time:", avg_wt)
+    print("Average Turnaround Time:", avg_tat)
+
+# Main Function
+if __name__ == '__main__':
+    # Number of processes
+    N = 5
+
+    # Array for Arrival time
+    at = [0, 1, 2, 3, 4]
+
+    # Array for Burst Time
+    bt = [4, 3, 1, 2, 5]
+
+    # Array for Priority
+    priority = [2, 1, 3, 4, 5]
+
+    # Function call to calculate completion time, waiting time, and turnaround time
+    CalculateTimes(at, bt, priority, N)                                
+            </code>
+          </pre>
+    </div>
+
+    <div class="button-container">
+        <a href="Priority_Algo.html" class="active">Go to Algorithm</a>
+    </div>
+
+    <script src="Priority.js"></script>
+</body>
+</html>

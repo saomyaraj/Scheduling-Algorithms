@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="Priority_Algo.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <h1>Priority Scheduling Algorithm</h1>
+    <div id="inputForm">
+        <label for="numProcesses">Number of Processes:</label>
+        <input type="number" id="numProcesses" name="numProcesses" min="1">
+        <button onclick="createInputFields()" id="Generate">Generate</button>
+    </div>
+    <div id="processInputs"></div>
+    <button onclick="calculateTimes()" id="calculateButton">Calculate Times</button>
+    <div id="outputTable" class="outputTable"></div>
+    <div class="ganttChart" id="ganttChart"></div>
+    <script src="Priority_Algo.js"></script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="FCFS.css">
+</head>
+<body>
+    <div class="preloader">
+        <div class="spinner"></div>
+        <div class="loading-text">Loading<span class="dot1">.</span><span class="dot2">.</span><span class="dot3">.</span></div>
+    </div>
+    <div class="container">
+        <br>
+        <h1><b><i>First Come First Serve (FCFS)</i></b></h1>
+        <br>
+        <p><h3><b>Introduction:</b></h3> <br>
+        <h4>This Algorithm is the simplest type of CPU scheduling. In FCFS, the process that arrives first is executed first. The execution continues until the process is finished, and then the next process in the queue is executed.</h4>
+        <h4>There is no preemption in FCFS scheduling. Once a process starts its execution, it runs to completion without being interrupted by other processes.</h4>
+        <p><h3><b>Criteria:</b></h3> <br>
+            <h4>The process that arrives first in the ready queue is served first.</h4>
+        <h3><b>Decision Mode:</b></h3> <br>   
+            <h4>Non-preemptive: The currently running process is not interrupted by new arrivals; it continues until completion.</h4>               
+        <h3><b>Implementation:</b></h3> <br>              
+            <h4>This strategy is implemented using a FIFO queue. Processes are executed in the order they arrive, with no sorting based on burst time.</h4></p>
+        <br>
+        <h1 class="advantages"><b>Advantages</b></h1>
+        <ul class="text">
+        <li><h5>FCFS is simple to understand and easy to implement.</h5></li>
+        <li><h5>It is fair in the sense that it serves processes in the order they arrive.</h5></li>
+        <li><h5>There is no starvation; every process gets a chance to execute.</h5></li>
+        </ul>
+        <br>
+        <h1 class="disadvantages"><b>Disadvantages</b></h1>
+        <ul class="text">
+            <li>
+                <h5>Can lead to poor performance if a long process arrives before shorter ones, known as the convoy effect.</h5>
+            </li>
+            <li>
+                <h5>Not ideal for time-sharing systems where it is important to switch between processes frequently.</h5>
+            </li>
+            <li>
+                <h5>It does not prioritize processes, which can be inefficient if some processes are more important than others.</h5>
+            </li>
+        </ul>
+        <h1 class="algorithm"><b>Algorithm</b></h1>
+        <ol class="text-algo">
+                <li>Initialize an empty queue for processes.</li>
+                <li>Read the processes along with their arrival time and burst time.</li>
+                <li>Sort the processes based on their arrival time.</li>
+                <li>Enqueue all the processes into the ready queue based on their arrival time.</li>
+                <li>Set the current time to 0.</li>
+                <li>
+                    While the ready queue is not empty:
+                     a. Dequeue the process from the ready queue.
+                     b. Execute the process for its burst time.
+                     c. Update the current time.
+                     d. Print the process ID and its waiting time (current time - arrival time).
+                     e. Update the turnaround time (current time - arrival time).
+                     f. Repeat until all processes are executed.
+                </li> 
+                <li>Calculate the average waiting time by summing up the waiting times of all processes and dividing by the total number of processes.</li> 
+                <li>Calculate the average turnaround time by summing up the turnaround times of all processes and dividing by the total number of processes.</li>
+                <li>Print the average waiting time and average turnaround time.</li>
+        </ol>
+        <br>
+        <h1 class="code"><b>Sample Code</b></h1>
+        <pre id="codeSnippet">
+            <code>
+# Function to Calculate completion time, waiting time, turnaround time, and average times
+def CalculateTimes(at, bt, N):
+# Declare the arrays for completion time, waiting time, and turnaround time
+    ct = [0] * N
+    wt = [0] * N
+    tat = [0] * N
+
+    # Calculate completion time for each process
+    ct[0] = at[0] + bt[0]
+    for i in range(1, N):
+        ct[i] = max(ct[i - 1], at[i]) + bt[i]
+
+    # Calculate waiting time for each process
+    for i in range(N):
+        wt[i] = ct[i] - at[i] - bt[i]
+
+    # Calculate turnaround time for each process
+    for i in range(N):
+        tat[i] = bt[i] + wt[i]
+
+    # Calculate average waiting time
+    avg_wt = sum(wt) / N
+
+    # Calculate average turnaround time
+    avg_tat = sum(tat) / N
+
+    # Print table header
+    print("\nProcess\tArrival Time\tBurst Time\tCompletion Time\tWaiting Time\tTurnaround Time")
+
+    # Print process details
+    for i in range(N):
+        print(f"{i + 1}\t{at[i]}\t\t{bt[i]}\t\t{ct[i]}\t\t{wt[i]}\t\t{tat[i]}")
+
+    # Print Average Waiting Time and Average Turnaround Time
+    print("\nAverage Waiting Time:", avg_wt)
+    print("Average Turnaround Time:", avg_tat)
+
+# Main Function
+if __name__ == '__main__':
+    # Number of processes
+    N = 5
+
+    # Array for Arrival time
+    at = [0, 1, 2, 3, 4]
+
+    # Array for Burst Time
+    bt = [4, 3, 1, 2, 5]
+
+    # Function call to calculate completion time, waiting time, and turnaround time
+    CalculateTimes(at, bt, N)                                
+            </code>
+          </pre>
+    </div>
+
+    <div class="button-container">
+        <a href="FCFS_Algo.html" class="active">Go to Algorithm</a>
+    </div>
+
+    <script src="FCFS.js"></script>
+</body>
+</html>
