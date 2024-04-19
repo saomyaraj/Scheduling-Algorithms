@@ -23,3 +23,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     codeSnippet.parentNode.insertBefore(copyButton, codeSnippet.nextSibling);
 });
+
+let tl = gsap.timeline();
+
+    tl.from(".container, .heading, .intro, .criteria, .decision, .implementation, .advantages, .disadvantages, .algorithm, .code, .button-container", {
+        y: 50,
+        duration: 1.5,
+        delay: 2,
+        opacity: 0,
+        stagger: 0.3
+    });
