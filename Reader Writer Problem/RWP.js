@@ -27,3 +27,13 @@ function copyCode(codeSnippetId) {
             console.error('Failed to copy: ', err);
         });
 }
+
+let tl = gsap.timeline();
+
+    tl.from(".container, .heading, .intro, .cases, .variables, .functions, .writer, .reader, .conclusion", {
+        y: 50,
+        duration: 1.5,
+        delay: 2,
+        opacity: 0,
+        stagger: 0.3
+    });
